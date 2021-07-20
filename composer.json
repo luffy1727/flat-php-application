@@ -10,9 +10,8 @@
     "php": "^7.2",
     "ext-ctype": "*",
     "ext-iconv": "*",
-    "ext-json": "*"
-  },
-  "require-dev": {
+    "ext-json": "*",
+    "vlucas/phpdotenv": "^5.3"
   },
   "config": {
     "preferred-install": {
