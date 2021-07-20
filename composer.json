@@ -1,0 +1,37 @@
+{
+  "name": "boozt/assignment",
+  "type": "project",
+  "description": "Flat php backend server",
+  "author": {
+    "name": "Chintushig Ochirsukh",
+    "email": "tushig.tushig@gmail.com"
+  },
+  "require": {
+    "php": "^7.2",
+    "ext-ctype": "*",
+    "ext-iconv": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true,
+    "platform": {
+      "php": "7.2.2"
+    },
+    "secure-http": false
+  },
+  "autoload": {
+    "psr-4": {
+      "Boozt\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Boozt\\Tests\\": "tests/"
+    }
+  }
+}
