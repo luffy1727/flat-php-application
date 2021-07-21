@@ -2,6 +2,8 @@
 
 namespace Boozt\Model;
 
+use Exception;
+
 class Order
 {
     private $id;
@@ -30,8 +32,17 @@ class Order
         return $this->purchaseDate;
     }
 
+    /**
+     * @param $purchaseDate
+     * @return $this
+     * @throws Exception
+     */
     public function setPurchaseDate($purchaseDate)
     {
+        if ($purchaseDate > new \DateTime()) {
+            throw new Exception();
+        }
+
         $this->purchaseDate = $purchaseDate;
 
         return $this;
