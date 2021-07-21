@@ -1,7 +1,8 @@
 <?php
 
-require "../bootstrap.php";
 use Boozt\Controller\AnalyticController;
+
+require "../bootstrap.php";
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -14,6 +15,9 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 if (array_key_exists('QUERY_STRING', $_SERVER)) {
     $paramsUri = $_SERVER['QUERY_STRING'];
     $params = explode( '&', $paramsUri);
+    if (array_key_exists('0' , $params) && $params[0] == '') {
+        $params = [];
+    }
 } else {
     $params = [];
 }
