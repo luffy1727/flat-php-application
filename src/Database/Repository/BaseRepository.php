@@ -2,7 +2,6 @@
 
 namespace Boozt\Database\Repository;
 
-
 abstract class BaseRepository implements RepositoryInterface
 {
     protected $db = null;

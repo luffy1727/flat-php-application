@@ -20,8 +20,8 @@ class AnalyticController
         $this->requestMethod = $requestMethod;
         $this->path = $path;
         $this->params = [];
-        foreach($params as $param) {
-            $tmp = explode( '=', $param);
+        foreach ($params as $param) {
+            $tmp = explode('=', $param);
             $this->params[$tmp[0]] = $tmp[1];
         }
     }

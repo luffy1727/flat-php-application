@@ -4,8 +4,8 @@ namespace Boozt\Database;
 
 use PDOException;
 
-class DatabaseConnector {
-
+class DatabaseConnector
+{
     private $connection = null;
 
     public function __construct()

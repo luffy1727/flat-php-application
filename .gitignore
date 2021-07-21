@@ -55,3 +55,4 @@
 .idea/*
 .env
 .DS_STORE
+.php-cs-fixer.cache

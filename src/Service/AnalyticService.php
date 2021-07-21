@@ -29,7 +29,7 @@ class AnalyticService
         $response['totalRevenue'] = 0;
         $orderItems = $this->orderItemRepository->findAll();
 
-        foreach($orderItems as $item) {
+        foreach ($orderItems as $item) {
             $response['totalRevenue'] += $item['quantity'] * $item['price'];
         }
 
@@ -49,7 +49,6 @@ class AnalyticService
             $begin->modify('-30 day');
             $params['from'] = $begin;
         } else {
-
             $params['from'] = DateTime::createFromFormat('Y-m-d', $params['from']);
         }
         $response['customerData']= $this->customerRepository->findBetweenTimeFrames($params['from'], $params['to']);
