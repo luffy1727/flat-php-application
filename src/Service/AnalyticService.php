@@ -26,11 +26,11 @@ class AnalyticService
     {
         $response['customerCount'] = $this->customerRepository->findCount();
         $response['orderCount'] = $this->orderRepository->findCount();
-        $response['totalAvenue'] = 0;
+        $response['totalRevenue'] = 0;
         $orderItems = $this->orderItemRepository->findAll();
 
         foreach($orderItems as $item) {
-            $response['totalAvenue'] += $item['quantity'] * $item['price'];
+            $response['totalRevenue'] += $item['quantity'] * $item['price'];
         }
 
         return $response;
@@ -44,15 +44,14 @@ class AnalyticService
         } else {
             $params['to'] = DateTime::createFromFormat('Y-m-d', $params['to']);
         }
-
-        if (!array_key_exists('from', $params) || !$params['from']) {
+        if (!array_key_exists('from', $params)) {
             $begin = clone $today;
             $begin->modify('-30 day');
             $params['from'] = $begin;
         } else {
+
             $params['from'] = DateTime::createFromFormat('Y-m-d', $params['from']);
         }
-
         $response['customerData']= $this->customerRepository->findBetweenTimeFrames($params['from'], $params['to']);
         $response['orderData']= $this->orderRepository->findBetweenTimeFrames($params['from'], $params['to']);
 

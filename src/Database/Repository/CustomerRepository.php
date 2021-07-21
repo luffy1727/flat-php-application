@@ -57,7 +57,8 @@ class CustomerRepository extends BaseRepository
             FROM
                 customer
             WHERE
-                customer.created_at >= :from AND customer.created_at =< :to";
+                customer.created_at >= :from AND customer.created_at <= :to
+            ";
 
         try {
             $stmt = $this->db->prepare($statement);
