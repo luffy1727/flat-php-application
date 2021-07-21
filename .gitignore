@@ -54,3 +54,4 @@
 .idea
 .idea/*
 .env
+.DS_STORE
