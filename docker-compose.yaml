@@ -1,0 +1,36 @@
+version: "3.1"
+
+services:
+  db:
+    image: mariadb:10.5.3
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3307:3306'
+  webserver:
+    image: nginx:alpine
+    restart: on-failure
+    ports:
+      - 8000:80
+    links:
+      - flat-php
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:cached
+  flat-php:
+    build: docker/php-fpm
+    restart: on-failure
+    volumes:
+      - ./.:/var/www/html:delegated
+      - ./vendor:/var/www/html/vendor:delegated
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: on-failure
+    links:
+      - db:db
+    ports:
+      - 8008:80
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: PMAPASSWORD
+      PMA_HOST: db
